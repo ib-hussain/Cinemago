@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinemago - Sign Up</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Anaheim&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/signup.css" />
+  </head>
+  <body>
+    <div class="container full-height">
+      <div class="logo">
+        <a href="home.html" class="brand">
+          <img src="pictures/logo.png" alt="Cinemago Logo" class="logo-img" />
+        </a>
+        <p class="subtitle">Join us and start your journey!</p>
+      </div>
+
+      <div class="form-wrapper">
+        <form id="signup-form">
+          <input type="text" name="fullname" placeholder="Enter your full name" required />
+          <input type="email" name="email" placeholder="Your email address" required />
+          <input type="password" name="password" placeholder="Create a password" required />
+          <input type="password" name="confirm_password" placeholder="Re-enter your password" required />
+          <div class="checkbox">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms">I agree with <a href="#">Terms & Conditions</a></label>
+          </div>
+          <button class="btn" type="submit">Sign Up</button>
+          <div id="error-message"></div>
+        </form>
+      </div>
+
+      <div class="footer">
+        <span class="registered"><br>Already registered?<br><br></span>
+        <a href="login.html" class="login-link">Log In</a>
+      </div>
+    </div>
+
+    <script src="js/signup.js">
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=DM+Sans:wght@400;500;700&family=Manrope:wght@300;400;600&family=Anaheim&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/movie_info.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="navbar">
+        <a href="../home.html" class="brand">
+          <img
+            src="../pictures/logo.png"
+            alt="Cinemago Logo"
+            class="logo-img"
+          />
+        </a>
+        <nav>
+          <a href="../home.html">Home</a>
+          <a href="../High-Rated.html">High Rated</a>
+          <a href="../user/rate.html" class="active">Rate</a>
+          <a href="../user/community.html">Community</a>
+          <a href="../user/suggest.html">Suggest</a>
+        </nav>
+        <div class="header-icons">
+          <a href="../search.html" class="icon-circle">
+            <img src="../pictures/search1.jpg" alt="Search" />
+          </a>
+          <a href="../my-profile.html" class="icon-circle">
+            <img src="../pictures/profile1.jpg" alt="Profile" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container" id="movie-container">
+      <div class="movie-info">
+        <img id="movie-poster" src="" alt="Movie Poster" class="movie-poster" />
+        <div class="details">
+          <h1 class="title" id="movie-title"></h1>
+          <p class="subinfo" id="movie-subinfo"></p>
+          <h2 class="rating" id="average-rating"></h2>
+          <p class="description" id="movie-description"></p>
+          <p>
+            <strong class="label">Director:</strong>
+            <span class="value" id="movie-director"></span>
+          </p>
+          <p>
+            <strong class="label">Writer(s):</strong>
+            <span class="value" id="movie-writer"></span>
+          </p>
+          <p>
+            <strong class="label">Stars:</strong>
+            <span class="value" id="movie-stars"></span>
+          </p>
+        </div>
+      </div>
+
+      <div id="rate-container" style="margin-top:20px; text-align:center;">
+      </div>
+    </div>
+
+    <script src="../js/rate.js"></script>
+
+    <script>
+      // Set dynamic page title from movie name
+      document.addEventListener('DOMContentLoaded', async function () {
+        const params = new URLSearchParams(window.location.search);
+        const movieID = params.get('movie_id');
+        if (!movieID) {
+          document.title = "Cinemago - Rate Movie";
+          return;
+        }
+        try {
+          const response = await fetch('/get_movie', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ movie_id: movieID })
+          });
+          const data = await response.json();
+          if (data.status === 'success') {
+            document.title = `Cinemago - ${data.movie_name}`;
+          } else {
+            document.title = "Cinemago - Rate Movie";
+          }
+        } catch (err) {
+          document.title = "Cinemago - Rate Movie";
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

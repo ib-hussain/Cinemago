@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinemago - Highly Rated Movies</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Anaheim&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/High-Rated-styles.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+  </head>
+  <body>
+    <script src="js/include-navbar.js"></script>
+
+    <main>
+      <div class="carousel-container">
+        <button class="nav-btn left-btn">&#10094;</button>
+        <div class="carousel">
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=tb" class="overlay-link"></a>
+            <img src="pictures/1.jpg" alt="The Batman(2022)" />
+            <p>The Batman(2022)</p>
+            <div class="rating" data-movie-id="tb"></div>
+          </div>
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=bs" class="overlay-link"></a>
+            <img src="pictures/2.jpg" alt="Black Swan" />
+            <p>Black Swan</p>
+            <div class="rating" data-movie-id="bs"></div>
+          </div>
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=3b" class="overlay-link"></a>
+            <img src="pictures/3.jpg" alt="3 Below: Tales of Arcadia" />
+            <p>3 Below: Tales of Arcadia</p>
+            <div class="rating" data-movie-id="3b"></div>
+          </div>
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=inception" class="overlay-link"></a>
+            <img src="pictures/4.jpg" alt="Inception" />
+            <p>Inception</p>
+            <div class="rating" data-movie-id="inception"></div>
+          </div>
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=ouatih" class="overlay-link"></a>
+            <img src="pictures/5.jpg" alt="Once Upon a Time in Hollywood" />
+            <p>Once Upon a Time in Hollywood</p>
+            <div class="rating" data-movie-id="ouatih"></div>
+          </div>
+
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=barbie" class="overlay-link"></a>
+            <img src="pictures/6.jpg" alt="Barbie" />
+            <p>Barbie</p>
+            <div class="rating" data-movie-id="barbie"></div>
+          </div>
+
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=oppenheimer" class="overlay-link"></a>
+            <img src="pictures/65.jpg" alt="Oppenheimer" />
+            <p>Oppenheimerr</p>
+            <div class="rating" data-movie-id="oppenheimer"></div>
+          </div>
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=tls" class="overlay-link"></a>
+            <img src="pictures/7.jpg" alt="The Long Shot" />
+            <p>The Long Shot</p>
+            <div class="rating" data-movie-id="tls"></div>
+          </div>
+
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=interstellar" class="overlay-link"></a>
+            <img src="pictures/10.jpg" alt="Interstellar" />
+            <p>Interstellar</p>
+            <div class="rating" data-movie-id="interstellar"></div>
+          </div>
+          <div class="movie">
+            <a href="search/movie_template.html?movie_id=tp" class="overlay-link"></a>
+            <img src="pictures/9.jpg" alt="The Prestige" />
+            <p>The Prestige</p>
+            <div class="rating" data-movie-id="tp"></div>
+          </div>
+        </div>
+        <button class="nav-btn right-btn">&#10095;</button>
+      </div>
+
+      <a href="user/suggest.html" class="suggest-btn"
+        >Get Personal Suggestions</a
+      >
+    </main>
+
+    <script src="js/High-Rated-script.js"></script> 
+<script src="js/fetch-ratings.js"></script> 
+  </body>
+</html>

@@ -1,0 +1,74 @@
+body {
+  background-color: white;
+  font-family: 'Manrope', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px;
+}
+
+.search-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center every row */
+  gap: 30px;
+  margin-top: 80px;
+}
+
+/* Movie card styles */
+.movie-card {
+  flex: 0 0 calc(25% - 30px); /* 4 per row */
+  max-width: 250px;
+  background-color: #f1f1f1;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  color: #171a1f;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.movie-title {
+  display: block;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive handling */
+@media (max-width: 1200px) {
+  .movie-card {
+    flex: 0 0 calc(33.33% - 30px); /* 3 cards */
+  }
+}
+
+@media (max-width: 900px) {
+  .movie-card {
+    flex: 0 0 calc(50% - 30px); /* 2 cards */
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-card {
+    flex: 0 0 100%; /* 1 card */
+  }
+}

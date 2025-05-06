@@ -17,12 +17,4 @@ Cinemago is a movie recommendation and rating platform built with HTML, CSS, Jav
 - **Backend**: Flask (Python)
 - **Storage**: CSV files (no external database used)
 
-## 📁 Project Structure
 
-/Cinemago
-├── static/ # CSS, JS, images
-├── templates/ # HTML templates
-├── user/ # User features (rate, suggest, etc.)
-├── app.py # Main Flask application
-├── users.csv # User data storage
-└── README.md # You're here!

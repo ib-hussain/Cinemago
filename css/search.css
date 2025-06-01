@@ -76,9 +76,23 @@ main {
   text-align: center;
   margin-top: 40px;
 }
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.search-icon {
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
 
 #movie-search {
-  width: 60%;
+  width: 80%;
   max-width: 500px;
   padding: 14px 20px;
   font-size: 18px;

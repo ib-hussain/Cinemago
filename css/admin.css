@@ -1,54 +1,144 @@
 body {
-      font-family: 'Manrope', sans-serif;
-      margin: 0; 
-      background-color: #98db2e;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color:#354e0d ;
-    }
-    .user-table, .user-table th, .user-table td {
-      border-collapse: collapse;
-      /* border: 1px solid #ddd; */
-      border-radius: 10px;
-      padding: 1rem;
-    }
-    .user-table {
-      width: 100%;
-      margin-bottom: 3rem;
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    .upload-box {
-      background: #fff;
-      padding: 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      border-radius: 10px;
-      max-width: 700px;
-      margin: auto;
-    }
-    .upload-box input, .upload-box textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .upload-box input[type="file"] {
-      border: none;
-    }
-    .upload-box button {
-      background:#98db2e;
-      color: #171a1f;
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .section-title {
-      margin: 2rem 0 1rem;
-      font-weight: bold;
-      font-size: 2rem;
-      color: #354e0d;
-    }
+  font-family: 'Manrope', sans-serif;
+  margin: 0;
+  background-color: #98db2e;
+}
+
+h1 {
+  font-size: 2.5rem;
+  padding-top: 50px;
+  margin-bottom: 1.5rem;
+  color: #354e0d;
+  text-align: center;
+}
+
+.section-title {
+  margin: 2rem 0 1rem;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #354e0d;
+  text-align: center;
+}
+
+/* Centered user table */
+.user-table-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.user-table {
+  max-width: 800px;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.user-table th,
+.user-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.user-table th {
+  background-color: #e8f7ba;
+  color: #354e0d;
+}
+
+.user-table tr:hover {
+  background-color: #f5f5f5;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+/* Upload Movie Form */
+.upload-box {
+  background: #fff;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.upload-box input,
+.upload-box textarea {
+  width: 100%;
+  /* color: transparent; */
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #98db2e;
+  border-radius: 5px;
+  font-family: 'Manrope', sans-serif;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  color: #354e0d;
+}
+
+.upload-box button {
+  background: #354e0d;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.upload-box button:hover {
+
+  background: #2a3a0b;
+}
+
+/* Form for updating weight */
+#update-form {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#update-form input {
+  margin: 0.5rem;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 220px;
+}
+
+#update-form button {
+  background: #354e0d;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#update-form button:hover {
+  background: #2a3a0b;
+}

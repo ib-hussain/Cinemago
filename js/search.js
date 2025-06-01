@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       card.className = 'movie-card';
       card.href = `search/movie_template.html?movie_id=${movie.movie_id}`;
       card.innerHTML = `
-        <img src="pictures/${movie.poster}.jpg" alt="${movie.movie_name}" class="movie-poster" />
+        <img src="pictures/${movie.poster}" alt="${movie.movie_name}" class="movie-poster" />
         <span class="movie-title">${movie.movie_name}</span>
       `;
       grid.appendChild(card);

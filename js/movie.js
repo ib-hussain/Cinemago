@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             document.title = `Cinemago - ${data.movie_name}`; // Dynamic browser tab title
             document.getElementById('movie-title').textContent = data.movie_name;
             document.getElementById('movie-subinfo').textContent = data.year_genre;
-            document.getElementById('movie-poster').src = `../pictures/${data.poster}.jpg`;
+            document.getElementById('movie-poster').src = `../pictures/${data.poster}`;
             document.getElementById('movie-description').textContent = data.description;
             document.getElementById('movie-director').textContent = data.director;
             document.getElementById('movie-writer').textContent = data.writer;

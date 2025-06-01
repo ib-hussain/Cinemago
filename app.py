@@ -6,7 +6,10 @@ app = Flask(__name__, static_folder='.', static_url_path='')
 
 users_file = 'user/users.csv'
 movies_file = 'movies.csv'
-ADMIN_EMAILS = ['ibrahimbeaconarion@gmail.com', 'i232626@isb.nu.edu.pk', 'captainkrypton123@gmail.com']
+if True:
+    ADMIN_EMAILS = ['ibrahimbeaconarion@gmail.com', 'i232626@isb.nu.edu.pk', 'captainkrypton123@gmail.com']
+from flask import session
+app.secret_key = 'something-very-secret'
 
 @app.route('/')
 def index():
@@ -40,25 +43,28 @@ def signup():
 def login():
     email = request.form['email']
     password = request.form['password']
+    
     if os.path.exists(users_file):
         with open(users_file, 'r') as f:
             reader = csv.reader(f)
             for row in reader:
                 if len(row) >= 3 and row[1] == email and row[2] == password:
-                    if row[1] in ADMIN_EMAILS:
+                    session['email'] = email  # ✅ store it server-side!
+                    if email in ADMIN_EMAILS:
                         return jsonify({'status': 'success', 'redirect': '/admin-dashboard.html'})
                     return jsonify({'status': 'success', 'redirect': '/home.html'})
     return jsonify({'status': 'error', 'message': 'Invalid email or password'})
-
 from werkzeug.utils import secure_filename
 @app.route('/admin/upload_movie', methods=['POST'])
 def upload_movie():
     movie_name = request.form['movie_name']
+    year_genre = request.form['year_genre']
+    rating = request.form['rating']
     description = request.form['description']
     director = request.form['director']
     writer_ = request.form['writer']
     stars = request.form['stars']
-    year_genre = request.form['year_genre']
+    # movie_id = request.form['movie_id']
     poster_name = request.form['poster_name']
     poster_file = request.files['poster']
     if not poster_file or not poster_name:
@@ -76,10 +82,10 @@ def upload_movie():
         'writer': writer_,
         'stars': stars,
         'description': description,
-        'poster': f'pictures/{safe_filename}',
+        'poster': f'movie_posters/{safe_filename}',
         'year_genre': year_genre,
-        'total_weighted': 0,
-        'num_ratings': 0
+        'total_weighted': rating,
+        'num_ratings': 1
     }
     # Write to movies.csv
     file_exists = os.path.exists(movies_file)
@@ -104,12 +110,19 @@ def get_all_users():
                         'weight': row[3]
                     })
     return jsonify({'status': 'success', 'users': users})
-# @app.route('/admin-dashboard.html')
-# def serve_admin_dashboard():
-#     email = request.args.get('email')
-#     if email and email in ADMIN_EMAILS:
-#         return send_from_directory(app.static_folder, 'admin-dashboard.html')
-#     return redirect('/home.html')
+
+@app.route('/admin-dashboard.html')
+def serve_admin_dashboard():
+    email = session.get('email')
+    if email and email in ADMIN_EMAILS:
+        return send_from_directory(app.static_folder, 'admin-dashboard.html')
+    return redirect('/home.html')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/home.html')
+
 @app.route('/update_weight', methods=['POST'])
 def update_weight():
     data = request.get_json()

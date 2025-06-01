@@ -68,6 +68,7 @@ h1 {
 .upload-box textarea {
   width: 100%;
   /* color: transparent; */
+  color: #171a1f;
   padding: 0.8rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;

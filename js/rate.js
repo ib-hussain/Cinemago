@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const avg = (data.total_weighted / data.num_ratings).toFixed(1);
                 avgRatingDisplay.textContent = `${Math.min(avg, 10)}/10`;
 
-                moviePoster.src = `../pictures/${data.poster}.jpg`;
+                moviePoster.src = `../pictures/${data.poster}`;
                 moviePoster.alt = `${data.movie_name} Poster`;
 
                 movieTitle.textContent = data.movie_name;

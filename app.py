@@ -147,19 +147,21 @@ def rate_movie():
     else:
         return jsonify({'status': 'error', 'message': 'Movie not found'})
 
-import webbrowser
 # if __name__ == "__main__":
 #     webbrowser.open('http://cinemago.com/')
 #     app.run(host='127.0.0.1', port=80, debug=True)
 
+# import webbrowser
 # if __name__ == "__main__":
 #     webbrowser.open('http://cinemago.com/')
 #     app.run(host='0.0.0.0', port=80, debug=True)
 # lt --port 80 --subdomain cinemago
 # https://whatismyipaddress.com/
 # 39.60.199.109
+# if __name__ == "__main__":
+#     app.run(debug=True)
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)  # Render will override port anyway
 
 @app.route('/<path:path>')
 def serve_file(path):

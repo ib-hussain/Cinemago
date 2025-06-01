@@ -10,7 +10,14 @@ main {
   margin: 0 auto;
   padding: 60px;
 }
-
+.community-heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  padding-top:40px;
+  margin-bottom: 40px;
+  color: #171a1f;
+}
 .search-grid {
   display: flex;
   flex-wrap: wrap;

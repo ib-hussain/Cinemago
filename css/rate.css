@@ -3,7 +3,6 @@ body {
     font-family: 'Manrope', sans-serif;
     margin: 0;
     padding: 0;
-    align-items: center;
 }
 .navbar {
     display: flex;
@@ -101,14 +100,19 @@ body {
   margin: 0 auto;
   /* padding: 20px; */
 }
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px;
+}
 .community-heading {
   font-family: 'Manrope', sans-serif;
   font-size: 50px;
   font-weight: 700;
+  padding-top:40px;
   margin-bottom: 40px;
   color: #171a1f;
 }
-
 .search-grid {
   display: flex;
   flex-wrap: wrap;
@@ -169,4 +173,38 @@ body {
   .movie-card {
     flex: 0 0 100%; /* 1 card */
   }
+}
+.search-container {
+  text-align: center;
+  margin-top: 40px;
+}
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.search-icon {
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+#movie-search {
+  width: 80%;
+  max-width: 500px;
+  padding: 14px 20px;
+  font-size: 18px;
+  border: 2px solid #98db2e;
+  border-radius: 10px;
+  font-family: 'Manrope', sans-serif;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#movie-search:focus {
+  border-color: #354e0d;
 }

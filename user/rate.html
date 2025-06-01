@@ -27,7 +27,7 @@
           <a href="../High-Rated.html">High Rated</a>
           <a href="../user/rate.html" class="active">Rate</a>
           <a href="../user/community.html">Community</a>
-          <a href="../user/suggest.html">Suggest</a>
+          <a href="../suggest.html">Suggest</a>
         </nav>
         <div class="header-icons">
           <a href="../search.html" class="icon-circle">
@@ -40,12 +40,28 @@
       </div>
     </header>
 
-    <section class="rate-section">
-      <h2 class="community-heading">Rate Movies</h2>
-      <div class="search-grid" id="rate-grid">
-        
+    <main>
+      <div class="search-container">
+        <h2 class="community-heading">Rate Movies</h2>
+        <div class="search-wrapper">
+          <input
+            type="text"
+            id="movie-search"
+            placeholder="Search for a movie..."
+          />
+          <img
+            src="../pictures/search-icon-green.png"
+            alt="Search Icon"
+            class="search-icon"
+          />
+          <!-- <img src="pictures/search-icon.svg" alt="Search Icon" class="search-icon"> -->
+        </div>
       </div>
-    </section>
+
+      <section id="rate-grid" class="search-grid">
+        <!-- Movie cards will go here -->
+      </section>
+    </main>
 
     <script src="../js/rate-grid.js"></script>
   </body>

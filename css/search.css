@@ -72,3 +72,23 @@ main {
     flex: 0 0 100%; /* 1 card */
   }
 }
+.search-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+#movie-search {
+  width: 60%;
+  max-width: 500px;
+  padding: 14px 20px;
+  font-size: 18px;
+  border: 2px solid #98db2e;
+  border-radius: 10px;
+  font-family: 'Manrope', sans-serif;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#movie-search:focus {
+  border-color: #354e0d;
+}

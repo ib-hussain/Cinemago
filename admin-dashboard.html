@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <script src="js/include-navbar.js"></script>
+</head>
+<body>
+
+  <h1 style=" text-align: center;padding-top: 50px;">Admin Dashboard</h1>
+
+  <div class="section-title" style=" text-align: center;padding-top: 15px;">User Database:</div>
+  <table class="user-table" id="user-table">
+    <tr><th>Name</th><th>Email</th><th>Weight</th></tr>
+  </table>
+
+  <form id="update-form" style="padding-left: 20px;text-align: center;">
+    <input type="email" name="email" placeholder="User Email to update" required />
+    <input type="number" name="weight" step="0.1" placeholder="New Weightage" required />
+    <button type="submit">Update Weight</button>
+  </form>
+  <!-- <hr /> -->
+  <div class="section-title"style=" text-align: center;padding-top: 15px;">Add New Movie</div>
+  <form class="upload-box" id="upload-form" enctype="multipart/form-data" style=" text-align: center;">
+    <input type="text" name="movie_name" placeholder="Movie Name" required />
+    <input type="text" name="description" placeholder="Short Description" required />
+    <input type="text" name="director" placeholder="Director" required />
+    <input type="text" name="writer" placeholder="Writer" required />
+    <input type="text" name="stars" placeholder="Stars" required />
+    <input type="text" name="year_genre" placeholder="Year & Genre (e.g. 2024, Sci-Fi)" required />
+    <input type="text" name="poster_name" placeholder="Poster Filename (e.g. dune2.jpg)" required />
+    <input type="file" name="poster" accept="image/*" required />
+    <button type="submit"style=" align-items: center;">Upload Movie</button>
+  </form>
+
+  <script>
+    // Load users
+    // Load users and make table clickable
+    fetch('/get_all_users')
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+        const table = document.getElementById('user-table');
+        data.users.forEach(user => {
+            const row = document.createElement('tr');
+            row.style.cursor = 'pointer';
+            row.innerHTML = `<td>${user.name}</td><td>${user.email}</td><td>${user.weight}</td>`;
+            
+            row.addEventListener('click', () => {
+            document.querySelector('#update-form input[name="email"]').value = user.email;
+            document.querySelector('#update-form input[name="weight"]').value = user.weight;
+            });
+
+            table.appendChild(row);
+        });
+        }
+    });
+    // // Update weight
+    // document.getElementById('update-form').addEventListener('submit', async e => {
+    //   e.preventDefault();
+    //   const formData = new FormData(e.target);
+    //   const res = await fetch('/update_weight', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //       email: formData.get('email'),
+    //       weight: parseFloat(formData.get('weight'))
+    //     })
+    //   });
+    //   const result = await res.json();
+    //   alert(result.message);
+    //   location.reload();
+    // });
+    // Upload new movie
+    document.getElementById('upload-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const res = await fetch('/admin/upload_movie', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await res.json();
+      alert(result.message);
+    });
+  </script>
+
+</body>
+</html>

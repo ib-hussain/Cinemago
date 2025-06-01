@@ -6,6 +6,7 @@ app = Flask(__name__, static_folder='.', static_url_path='')
 
 users_file = 'user/users.csv'
 movies_file = 'movies.csv'
+ADMIN_EMAILS = ['ibrahimbeaconarion@gmail.com', 'i232626@isb.nu.edu.pk', 'captainkrypton123@gmail.com']
 
 @app.route('/')
 def index():
@@ -39,15 +40,100 @@ def signup():
 def login():
     email = request.form['email']
     password = request.form['password']
-
     if os.path.exists(users_file):
         with open(users_file, 'r') as f:
             reader = csv.reader(f)
             for row in reader:
                 if len(row) >= 3 and row[1] == email and row[2] == password:
+                    if row[1] in ADMIN_EMAILS:
+                        return jsonify({'status': 'success', 'redirect': '/admin-dashboard.html'})
                     return jsonify({'status': 'success', 'redirect': '/home.html'})
-
     return jsonify({'status': 'error', 'message': 'Invalid email or password'})
+
+from werkzeug.utils import secure_filename
+@app.route('/admin/upload_movie', methods=['POST'])
+def upload_movie():
+    movie_name = request.form['movie_name']
+    description = request.form['description']
+    director = request.form['director']
+    writer_ = request.form['writer']
+    stars = request.form['stars']
+    year_genre = request.form['year_genre']
+    poster_name = request.form['poster_name']
+    poster_file = request.files['poster']
+    if not poster_file or not poster_name:
+        return jsonify({'status': 'error', 'message': 'Poster required'})
+    # Save poster
+    safe_filename = secure_filename(poster_name)
+    poster_path = os.path.join('pictures', safe_filename)
+    poster_file.save(poster_path)
+    # Generate movie_id
+    movie_id = str(abs(hash(movie_name + director + writer_)))[:8]
+    new_row = {
+        'movie_id': movie_id,
+        'movie_name': movie_name,
+        'director': director,
+        'writer': writer_,
+        'stars': stars,
+        'description': description,
+        'poster': f'pictures/{safe_filename}',
+        'year_genre': year_genre,
+        'total_weighted': 0,
+        'num_ratings': 0
+    }
+    # Write to movies.csv
+    file_exists = os.path.exists(movies_file)
+    with open(movies_file, 'a', newline='') as f:
+        fieldnames = new_row.keys()
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        if os.stat(movies_file).st_size == 0:  # Write header if file empty
+            writer.writeheader()
+        writer.writerow(new_row)
+    return jsonify({'status': 'success', 'message': 'Movie uploaded successfully'})
+@app.route('/get_all_users', methods=['GET'])
+def get_all_users():
+    users = []
+    if os.path.exists(users_file):
+        with open(users_file, 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if len(row) >= 4:
+                    users.append({
+                        'name': row[0],
+                        'email': row[1],
+                        'weight': row[3]
+                    })
+    return jsonify({'status': 'success', 'users': users})
+# @app.route('/admin-dashboard.html')
+# def serve_admin_dashboard():
+#     email = request.args.get('email')
+#     if email and email in ADMIN_EMAILS:
+#         return send_from_directory(app.static_folder, 'admin-dashboard.html')
+#     return redirect('/home.html')
+@app.route('/update_weight', methods=['POST'])
+def update_weight():
+    data = request.get_json()
+    target_email = data.get('email')
+    new_weight = str(data.get('weight'))
+    if not target_email or not new_weight:
+        return jsonify({'status': 'error', 'message': 'Invalid input'})
+    rows = []
+    updated = False
+    if os.path.exists(users_file):
+        with open(users_file, 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if len(row) >= 4 and row[1] == target_email:
+                    row[3] = new_weight
+                    updated = True
+                rows.append(row)
+    if updated:
+        with open(users_file, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerows(rows)
+        return jsonify({'status': 'success', 'message': 'Weight updated'})
+    else:
+        return jsonify({'status': 'error', 'message': 'User not found'})
 
 @app.route('/get_user', methods=['POST'])
 def get_user():
@@ -109,7 +195,6 @@ def get_movie():
                     })
     return jsonify({'status': 'error', 'message': 'Movie not found'})
 
-
 @app.route('/rate_movie', methods=['POST'])
 def rate_movie():
     data = request.get_json()
@@ -151,17 +236,15 @@ def rate_movie():
 #     webbrowser.open('http://cinemago.com/')
 #     app.run(host='127.0.0.1', port=80, debug=True)
 
-# import webbrowser
-# if __name__ == "__main__":
-#     webbrowser.open('http://cinemago.com/')
-#     app.run(host='0.0.0.0', port=80, debug=True)
+import webbrowser
+if __name__ == "__main__":
+    webbrowser.open('http://cinemago.com/')
+    app.run(host='0.0.0.0', port=80, debug=True)
 # lt --port 80 --subdomain cinemago
 # https://whatismyipaddress.com/
 # 39.60.199.109
 # if __name__ == "__main__":
 #     app.run(debug=True)
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=10000)  # Render will override port anyway
 
 @app.route('/<path:path>')
 def serve_file(path):

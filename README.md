@@ -22,8 +22,6 @@ This project is licensed under the MIT License.
 🌐 Live Demo
 Check out the live version at https://cinemago.com
 
-🤝 Contributing
-Contributions are welcome! Please open an issue or submit a pull request.
 
 📧 Contact
 For any inquiries, please contact ibrahimbeaconarion@gmail.com  

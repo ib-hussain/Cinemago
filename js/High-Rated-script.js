@@ -11,7 +11,7 @@ function autoScroll() {
         carousel.style.transition = 'none'; 
     } else {
         scrollAmount += step;
-        carousel.style.transition = 'transform 0.5s ease-in-out';
+        carousel.style.transition = 'transform 0.3s ease-in-out';
     }
     carousel.style.transform = `translateX(-${scrollAmount}px)`;
 }
@@ -28,7 +28,7 @@ leftBtn.addEventListener('click', () => {
         carousel.style.transition = 'none';
     } else {
         scrollAmount -= step;
-        carousel.style.transition = 'transform 0.5s ease-in-out';
+        carousel.style.transition = 'transform 0.3s ease-in-out';
     }
     carousel.style.transform = `translateX(-${scrollAmount}px)`;
 });

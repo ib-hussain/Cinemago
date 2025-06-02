@@ -157,7 +157,7 @@ def get_user():
 def get_all_movies():
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT movie_id AS movie_id, movie_name AS movie_name, poster AS poster FROM movies')
+    cursor.execute('SELECT movie_id, movie_name, poster, total_weighted AS total_weighted, num_ratings FROM movies')
     movies = [dict(row) for row in cursor.fetchall()]
     conn.close()
     return jsonify({'status': 'success', 'movies': movies})
@@ -200,7 +200,7 @@ def serve_file(path):
     return send_from_directory(app.static_folder, path)
 
 if __name__ == "__main__":
-    webbrowser.open('http://cinemago.com/')
+    # webbrowser.open('http://cinemago.com/')
     app.run(host='0.0.0.0', port=80, debug=True)
 
 # lt --port 80 --subdomain cinemago

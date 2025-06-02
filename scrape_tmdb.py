@@ -7,8 +7,8 @@ import random
 
 # --- CONFIG ---
 API_KEY = '5d603ec4bd433ee159af77e58efdc97d'
-DB_FILE = 'movies.db'
-CSV_FILE = 'movies.csv'
+DB_FILE = 'data/movies.db'
+CSV_FILE = 'data/movies.csv'
 POSTER_DIR = 'pictures/movie_posters'
 TMDB_API = 'https://api.themoviedb.org/3'
 

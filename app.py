@@ -26,14 +26,14 @@ def signup():
         return jsonify({'status': 'error', 'message': 'Passwords do not match'})
 
     if os.path.exists(users_file):
-        with open(users_file, 'r') as f:
+        with open(users_file, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             for row in reader:
                 if len(row) >= 2 and row[1] == email:
                     return jsonify({'status': 'error', 'message': 'Email already exists'})
 
     # Default weight = 1 if not provided during signup
-    with open(users_file, 'a', newline='') as f:
+    with open(users_file, 'a', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow([fullname, email, password, 1])
 
@@ -45,7 +45,7 @@ def login():
     password = request.form['password']
     
     if os.path.exists(users_file):
-        with open(users_file, 'r') as f:
+        with open(users_file, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             for row in reader:
                 if len(row) >= 3 and row[1] == email and row[2] == password:
@@ -71,7 +71,7 @@ def upload_movie():
         return jsonify({'status': 'error', 'message': 'Poster required'})
     # Save poster
     safe_filename = secure_filename(poster_name)
-    poster_path = os.path.join('pictures', safe_filename)
+    poster_path = os.path.join('pictures/movie_posters', safe_filename)
     poster_file.save(poster_path)
     # Generate movie_id
     movie_id = str(abs(hash(movie_name + director + writer_)))[:8]
@@ -89,7 +89,7 @@ def upload_movie():
     }
     # Write to movies.csv
     file_exists = os.path.exists(movies_file)
-    with open(movies_file, 'a', newline='') as f:
+    with open(movies_file, 'a', newline='', encoding='utf-8') as f:
         fieldnames = new_row.keys()
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         if os.stat(movies_file).st_size == 0:  # Write header if file empty
@@ -100,7 +100,7 @@ def upload_movie():
 def get_all_users():
     users = []
     if os.path.exists(users_file):
-        with open(users_file, 'r') as f:
+        with open(users_file, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             for row in reader:
                 if len(row) >= 4:
@@ -133,7 +133,7 @@ def update_weight():
     rows = []
     updated = False
     if os.path.exists(users_file):
-        with open(users_file, 'r') as f:
+        with open(users_file, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             for row in reader:
                 if len(row) >= 4 and row[1] == target_email:
@@ -141,7 +141,7 @@ def update_weight():
                     updated = True
                 rows.append(row)
     if updated:
-        with open(users_file, 'w', newline='') as f:
+        with open(users_file, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerows(rows)
         return jsonify({'status': 'success', 'message': 'Weight updated'})
@@ -154,7 +154,7 @@ def get_user():
     email = data.get('email')
 
     if os.path.exists(users_file) and email:
-        with open(users_file, 'r') as f:
+        with open(users_file, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             for row in reader:
                 if len(row) >= 4 and row[1] == email:
@@ -171,7 +171,7 @@ def get_user():
 def get_all_movies():
     movies = []
     if os.path.exists(movies_file):
-        with open(movies_file, 'r') as f:
+        with open(movies_file, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 movies.append({
@@ -189,7 +189,7 @@ def get_movie():
     movie_id = data.get('movie_id')
 
     if os.path.exists(movies_file) and movie_id:
-        with open(movies_file, 'r') as f:
+        with open(movies_file, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 if row['movie_id'] == movie_id:
@@ -222,7 +222,7 @@ def rate_movie():
     updated_movie = None
 
     if os.path.exists(movies_file):
-        with open(movies_file, 'r') as f:
+        with open(movies_file, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 if row['movie_id'] == movie_id:
@@ -232,7 +232,7 @@ def rate_movie():
                 rows.append(row)
 
     if updated_movie:
-        with open(movies_file, 'w', newline='') as f:
+        with open(movies_file, 'w', newline='', encoding='utf-8') as f:
             writer = csv.DictWriter(f, fieldnames=rows[0].keys())
             writer.writeheader()
             writer.writerows(rows)

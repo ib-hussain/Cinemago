@@ -19,7 +19,7 @@ Cinemago is a movie discovery and rating platform built using Flask. Users can b
 
 ## 🌐 Deployment on Render
 
-> The app is deployed at: [https://cinemago.onrender.com](https://cinemago.onrender.com) 
+> The app is deployed at: https://cinemago-2u2f.onrender.com/
 
 
 ## 📜 License

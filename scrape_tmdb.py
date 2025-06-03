@@ -38,7 +38,7 @@ def fetch_movie_details(movie_id):
 def scrape_and_upload(n):
     print("Scraping TMDB popular movies...")
     import random
-    page = random.randint(1, 200)  # TMDB supports up to 500 pages
+    page = random.randint(1, 450)  # TMDB supports up to 500 pages
     r = requests.get(f"{TMDB_API}/movie/popular?api_key={API_KEY}&language=en-US&page={page}")
     movies = r.json().get('results', [])[:n]
 

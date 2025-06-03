@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 from flask_sitemap import Sitemap
 
 app = Flask(__name__, static_folder='.', static_url_path='')
-app.secret_key = 'something-very-secret'
+app.secret_key = os.getenv('FLASK_SECRET', 'fallback-secret')
 
 DATABASE = 'data/movies.db'
 users_file = 'data/users.csv'
@@ -270,7 +270,7 @@ def serve_file(path):
     return send_from_directory(app.static_folder, path)
 
 if __name__ == "__main__":
-    webbrowser.open('http://cinemago.com/')
+    # webbrowser.open('http://cinemago.com/')
     app.run(host='0.0.0.0', port=80, debug=True)
 
 # lt --port 80 --subdomain cinemago

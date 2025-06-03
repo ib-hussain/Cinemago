@@ -6,7 +6,7 @@ import requests
 import random
 
 # --- CONFIG ---
-API_KEY = '5d603ec4bd433ee159af77e58efdc97d'
+API_KEY = os.getenv('TMDB_API_KEY')
 DB_FILE = 'data/movies.db'
 CSV_FILE = 'data/movies.csv'
 POSTER_DIR = 'pictures/movie_posters'

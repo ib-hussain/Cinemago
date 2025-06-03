@@ -21,7 +21,7 @@ def robots_txt():
     lines = [
         "User-Agent: *",
         "Disallow:",
-        "Sitemap: https://cinemago.onrender.com/sitemap.xml"
+        "Sitemap: https://cinemago-2u2f.onrender.com/sitemap.xml"
     ]
     return Response("\n".join(lines), mimetype="text/plain")
 
@@ -37,28 +37,28 @@ def sitemap_xml():
 
     # Homepage
     url = ET.SubElement(urlset, "url")
-    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/"
+    ET.SubElement(url, "loc").text = "https://cinemago-2u2f.onrender.com/"
 
     # Search page
     url = ET.SubElement(urlset, "url")
-    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/search.html"
+    ET.SubElement(url, "loc").text = "https://cinemago-2u2f.onrender.com/search.html"
 
     # Rate page
     url = ET.SubElement(urlset, "url")
-    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/rate.html"
+    ET.SubElement(url, "loc").text = "https://cinemago-2u2f.onrender.com/rate.html"
 
     # Suggest page
     url = ET.SubElement(urlset, "url")
-    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/suggest.html"
+    ET.SubElement(url, "loc").text = "https://cinemago-2u2f.onrender.com/suggest.html"
 
     # Community page
     url = ET.SubElement(urlset, "url")
-    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/user/community.html"
+    ET.SubElement(url, "loc").text = "https://cinemago-2u2f.onrender.com/user/community.html"
 
     # Movie entries
     for movie in movies:
         title = movie[0].replace(" ", "-")
-        movie_url = f"https://cinemago.onrender.com/movie/{title}"
+        movie_url = f"https://cinemago-2u2f.onrender.com/movie/{title}"
         url = ET.SubElement(urlset, "url")
         ET.SubElement(url, "loc").text = movie_url
 

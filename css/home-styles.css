@@ -607,3 +607,23 @@ body {
     color: white;
     max-width: 900px;
 }
+.credit-footer {
+  text-align: center;
+  padding: 20px 10px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  color: white;
+  background-color: #171a1f;
+  border-top: 1px solid #333;
+}
+
+.credit-footer a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.credit-footer a:hover {
+  color: #98db2e;
+  text-decoration: underline;
+}

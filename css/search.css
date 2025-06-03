@@ -46,9 +46,12 @@ main {
 .movie-card img {
   width: 100%;
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;         /* show entire poster */
+  background-color: white;     /* fill gaps with white */
+  /* padding: 10px;                */
   border-radius: 10px 10px 0 0;
 }
+
 
 .movie-title {
   display: block;

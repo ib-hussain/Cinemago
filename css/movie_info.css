@@ -107,19 +107,16 @@ body {
     align-items: flex-start;
     flex-wrap: wrap;
 }
+.movie-poster {
+  width: 360px;
+  height: 360px;
+  border-radius: 24px;
+  object-fit: contain;          /* Ensures full poster fits */
+  background-color: white;      /* Adds white padding around narrow/wide images */
+  /* padding: 10px;                Optional: Adds inner margin for framing*/
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-
-  .movie-poster {
-    width: 360px;
-    height: 360px;
-    border-radius: 24px;
-    object-fit: cover;
-    /* border: 6px solid #36454F; */
-    /* border: 3px solid #2a3439;*/ /*new frame border */
-    box-sizing: border-box; /* ensure border does not overflow */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-  }
   
   
   .details {

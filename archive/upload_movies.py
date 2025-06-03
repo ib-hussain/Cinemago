@@ -1,8 +1,8 @@
 import sqlite3
 import pandas as pd
 
-CSV_FILE = 'data/movies.csv'
-DB_FILE = 'data/movies.db'
+CSV_FILE = '../data/movies.csv'
+DB_FILE = '../data/movies.db'
 TABLE_NAME = 'movies'
 
 conn = sqlite3.connect(DB_FILE)

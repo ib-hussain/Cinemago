@@ -4,6 +4,9 @@ import sqlite3
 import os
 import webbrowser
 import csv
+from flask import Response
+import xml.etree.ElementTree as ET
+from flask_sitemap import Sitemap
 
 app = Flask(__name__, static_folder='.', static_url_path='')
 app.secret_key = 'something-very-secret'
@@ -11,6 +14,56 @@ app.secret_key = 'something-very-secret'
 DATABASE = 'data/movies.db'
 users_file = 'data/users.csv'
 ADMIN_EMAILS = ['ibrahimbeaconarion@gmail.com', 'i232626@isb.nu.edu.pk', 'captainkrypton123@gmail.com']
+
+ext = Sitemap(app=app)
+@app.route('/robots.txt')
+def robots_txt():
+    lines = [
+        "User-Agent: *",
+        "Disallow:",
+        "Sitemap: https://cinemago.onrender.com/sitemap.xml"
+    ]
+    return Response("\n".join(lines), mimetype="text/plain")
+
+@app.route('/sitemap.xml')
+def sitemap_xml():
+    conn = sqlite3.connect('movies.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT title FROM movies")
+    movies = cursor.fetchall()
+    conn.close()
+
+    urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+
+    # Homepage
+    url = ET.SubElement(urlset, "url")
+    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/"
+
+    # Search page
+    url = ET.SubElement(urlset, "url")
+    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/search.html"
+
+    # Rate page
+    url = ET.SubElement(urlset, "url")
+    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/rate.html"
+
+    # Suggest page
+    url = ET.SubElement(urlset, "url")
+    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/suggest.html"
+
+    # Community page
+    url = ET.SubElement(urlset, "url")
+    ET.SubElement(url, "loc").text = "https://cinemago.onrender.com/user/community.html"
+
+    # Movie entries
+    for movie in movies:
+        title = movie[0].replace(" ", "-")
+        movie_url = f"https://cinemago.onrender.com/movie/{title}"
+        url = ET.SubElement(urlset, "url")
+        ET.SubElement(url, "loc").text = movie_url
+
+    xml_str = ET.tostring(urlset, encoding='utf-8', method='xml')
+    return Response(xml_str, mimetype='application/xml')
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)

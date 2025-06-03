@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <script src="js/include-navbar.js"></script>
+</head>
+<body>
+
+  <h1>Admin Dashboard</h1>
+
+  <div class="section-title">User Database:</div>
+  <div class="user-table-container">
+    <table class="user-table" id="user-table">
+      <tr><th>Name</th><th>Email</th><th>Weight</th></tr>
+    </table>
+  </div>
+
+  <form id="update-form">
+    <input type="email" name="email" placeholder="User Email to update" required />
+    <input type="number" name="weight" step="0.1" placeholder="New Weightage" required />
+    <button type="submit">Update Weight</button>
+  </form>
+
+  <div class="section-title">Add New Movie</div>
+  <form class="upload-box" id="upload-form" enctype="multipart/form-data">
+    <input type="text" name="movie_name" placeholder="Movie Name" required />
+    <input type="text" name="year_genre" placeholder="Year & Genre (e.g. 2024, Sci-Fi)" required />
+    <input type="text" name="rating" placeholder="Movie Rating" required />
+    <input type="text" name="description" placeholder="Short Description" required />
+    <input type="text" name="director" placeholder="Director" required />
+    <input type="text" name="writer" placeholder="Writer" required />
+    <input type="text" name="stars" placeholder="Stars" required />
+    <!-- <input type="text" name="movie_id" placeholder="The URL of the movie" required /> -->
+    <input type="text" name="poster_name" placeholder="Poster Filename (e.g. dune2.jpg)" required />
+    <label for="poster" class="custom-file-upload">Choose Poster</label>
+    <input type="file" name="poster" id="poster" accept="image/*" required />
+    <!-- <br></br> -->
+    <button type="submit">Upload Movie</button>
+  </form>
+  <div class="section-title">Scrape Movies</div>
+  <form class="upload-box" id="scrape-form">
+    <input type="number" name="num_movies" min="1" placeholder="Number of movies to scrape" required />
+    <button type="submit">scrapy</button>
+  </form>
+
+
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

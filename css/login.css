@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+    background-color: white;
+    background-image: url("../pictures/backgroundsignup.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    background-color: #171a1f;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    width: 700px;
+    box-shadow: 0 0 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .logo {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .logo-link {
+    font-family: 'Anaheim', sans-serif;
+    font-size: 40px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  
+  .logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+  }
+  .brand:hover .logo-img {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+  }
+  .subtitle {
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    color: white;
+  }
+  
+  .form-wrapper {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+  }
+  
+  .checkbox {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: white;
+  }
+  
+  .checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .checkbox input[type="checkbox"]:checked::after {
+    content: '\2713';
+    color: #171a1f;
+    font-size: 16px;
+    position: absolute;
+    top: 1px;
+    left: 3px;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #98db2e;
+    color: #171a1f;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .registered {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .login-link {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    color: #98db2e;
+    text-decoration: none;
+  }
+  

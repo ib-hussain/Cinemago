@@ -269,13 +269,13 @@ def scrape_movies():
 def serve_file(path):
     return send_from_directory(app.static_folder, path)
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # webbrowser.open('http://cinemago.com/')
-    app.run(host='0.0.0.0', port=80, debug=True)
+    # app.run(host='0.0.0.0', port=80, debug=True)
 
 # lt --port 80 --subdomain cinemago
 # https://whatismyipaddress.com/
 # 39.60.199.109
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)

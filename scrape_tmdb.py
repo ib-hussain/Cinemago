@@ -23,7 +23,7 @@ def download_poster(url, filename):
                 f.write(r.content)
             return True
     except Exception as e:
-        print(f"⚠️ Poster download failed: {e}")
+        print(f"Poster download failed: {e}")
     return False
 
 def format_runtime(minutes):
@@ -36,7 +36,7 @@ def fetch_movie_details(movie_id):
     return r.json() if r.status_code == 200 else {}
 
 def scrape_and_upload(n):
-    print("🔍 Scraping TMDB popular movies...")
+    print("Scraping TMDB popular movies...")
     import random
     page = random.randint(1, 200)  # TMDB supports up to 500 pages
     r = requests.get(f"{TMDB_API}/movie/popular?api_key={API_KEY}&language=en-US&page={page}")
@@ -60,7 +60,7 @@ def scrape_and_upload(n):
 
         cursor.execute("SELECT 1 FROM movies WHERE movie_id = ?", (movie_id,))
         if cursor.fetchone():
-            print(f"⛔ Skipped (Duplicate): {movie['title']}")
+            print(f"Skipped (Duplicate): {movie['title']}")
             continue
 
         details = fetch_movie_details(movie_id)
@@ -130,12 +130,12 @@ def scrape_and_upload(n):
             'num_ratings': num_ratings
         })
 
-        print(f"✅ Uploaded: {movie['title']}")
+        print(f"Uploaded: {movie['title']}")
         added += 1
 
     csvfile.close()
     conn.close()
-    print(f"\n✔ Done. {added} movie(s) added.")
+    print(f"\nDone. {added} movie(s) added.")
 
 # --- Run
 if __name__ == '__main__':

@@ -57,3 +57,17 @@ document.getElementById('upload-form').addEventListener('submit', async e => {
   alert(result.message);
   e.target.reset();
 });
+document.getElementById('scrape-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const num = formData.get('num_movies');
+
+  const res = await fetch('/admin/scrape_movies', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ count: parseInt(num) })
+  });
+
+  const result = await res.json();
+  alert(result.message);
+});

@@ -248,12 +248,29 @@ def rate_movie():
     conn.close()
     return jsonify({'status': 'error', 'message': 'Movie not found'})
 
+@app.route('/admin/scrape_movies', methods=['POST'])
+def scrape_movies():
+    if session.get('email') not in ADMIN_EMAILS:
+        return jsonify({'status': 'error', 'message': 'Unauthorized access'})
+
+    data = request.get_json()
+    count = int(data.get('count', 0))
+    if count <= 0:
+        return jsonify({'status': 'error', 'message': 'Invalid count'})
+
+    import subprocess
+    try:
+        result = subprocess.run(['python', 'scrape_tmdb.py', str(count)], check=True, capture_output=True, text=True)
+        return jsonify({'status': 'success', 'message': f"{count} movies scraped and uploaded.\n" + result.stdout})
+    except subprocess.CalledProcessError as e:
+        return jsonify({'status': 'error', 'message': 'Scraping failed:\n' + e.stderr})
+
 @app.route('/<path:path>')
 def serve_file(path):
     return send_from_directory(app.static_folder, path)
 
 if __name__ == "__main__":
-    # webbrowser.open('http://cinemago.com/')
+    webbrowser.open('http://cinemago.com/')
     app.run(host='0.0.0.0', port=80, debug=True)
 
 # lt --port 80 --subdomain cinemago

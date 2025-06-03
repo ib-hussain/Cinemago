@@ -39,9 +39,15 @@
     <input type="text" name="poster_name" placeholder="Poster Filename (e.g. dune2.jpg)" required />
     <label for="poster" class="custom-file-upload">Choose Poster</label>
     <input type="file" name="poster" id="poster" accept="image/*" required />
-    <br></br>
+    <!-- <br></br> -->
     <button type="submit">Upload Movie</button>
   </form>
+  <div class="section-title">Scrape Movies</div>
+  <form class="upload-box" id="scrape-form">
+    <input type="number" name="num_movies" min="1" placeholder="Number of movies to scrape" required />
+    <button type="submit">scrapy</button>
+  </form>
+
 
   <script src="js/admin.js"></script>
 

@@ -553,6 +553,7 @@ body {
     font-size: 28px;
     font-family: 'DM Sans', sans-serif;
     margin-bottom: 20px;
+    /* align-content: center; */
 }
 
 .community-row {
@@ -572,8 +573,8 @@ body {
 
 /* Footer with Description */
 .site-footer {
-    border-top: 1px solid #171a1f;
-    padding-top: 40px;
+    border-top: 2px solid #98db2e;
+    padding-top: 10px;
 }
 
 .footer-content {

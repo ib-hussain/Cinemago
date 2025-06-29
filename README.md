@@ -15,12 +15,9 @@ Cinemago is a movie discovery and rating platform built using Flask. Users can b
 - **Frontend**: HTML, CSS, JavaScript (Vanilla)
 - **Backend**: Flask (Python), Gunicorn (for deployment)
 - **Database**: SQLite (`movies.db`)
-- **Deployment**: Render.com
+- **Deployment**: render.com
 
 ## 🌐 Deployment on Render
 
 > The app is deployed at: https://cinemago-2u2f.onrender.com/
 
-
-## 📜 License
-This project is for learning and educational purposes only.

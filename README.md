@@ -1,5 +1,7 @@
-# Cinemago🥀
-Cinemago is a movie discovery and rating platform built using Flask. Users can browse, rate, and suggest movies. Admins can add new content via web scraping, and user preferences are stored in a lightweight SQLite database.
+<h1 align="center">Cinemago🥀</h1>
+<p>Cinemago is a movie discovery and rating platform built using <strong>Flask</strong>. Users can <strong>browse</strong>, <strong>rate</strong>, and <strong>suggest movies</strong>. Admins can add new content via <strong>web scraping</strong>, and <strong>user preferences</strong> are stored in a lightweight <strong>SQLite database</strong>.</em></p>
+
+<hr />
 
 ## 🚀 Features
 

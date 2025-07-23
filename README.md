@@ -2,6 +2,11 @@
 <p>Cinemago is a movie discovery and rating platform built using <strong>Flask</strong>. Users can <strong>browse</strong>, <strong>rate</strong>, and <strong>suggest movies</strong>. Admins can add new content via <strong>web scraping</strong>, and <strong>user preferences</strong> are stored in a lightweight <strong>SQLite database</strong>.</em></p>
 
 <hr />
+<p align="center">
+  <img src="pictures/logo.png" alt="Cinemago🥀" style="border-radius: 25px; background: #171a1f;">
+</p>
+
+
 
 ## 🚀 Features
 

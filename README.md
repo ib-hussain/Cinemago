@@ -3,7 +3,7 @@
 
 <hr />
 <p align="center">
-  <img src="pictures/logo.png" alt="Cinemago🥀" style="border-radius: 25px; background: #171a1f;">
+  <img src="pictures/logo.png" alt="Cinemago🥀" >
 </p>
 
 
